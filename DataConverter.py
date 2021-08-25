@@ -286,7 +286,10 @@ class DataConverterCommand(sublime_plugin.TextCommand):
         settings['typed'] = kwargs['format'] not in self.untyped_formats
 
         # New lines
-        settings['newline'] = LINEENDINGS.get(self.view.line_endings(), os.linesep)
+        if user_settings.get('newline') is not None:
+            settings['newline'] = LINEENDINGS.get(user_settings.get('newline'))
+        else:
+            settings['newline'] = LINEENDINGS.get(self.view.line_endings(), os.linesep)
 
         user_quoting = user_settings.get('quoting', 'QUOTE_MINIMAL')
         settings['quoting'] = getattr(csv, user_quoting, csv.QUOTE_MINIMAL)
