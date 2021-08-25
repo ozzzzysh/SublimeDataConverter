@@ -571,7 +571,7 @@ class DataConverterCommand(sublime_plugin.TextCommand):
     def html(self, data):
         """HTML Table converter."""
         # Uses {i} and {n} as shorthand for self.settings['indent'] and self.settings['newline'].
-        self.set_syntax('HTML')
+        # self.set_syntax('HTML')
         thead, tbody = "", ""
 
         tr = "{{i}}{{i}}<tr>{{n}}{0}{{i}}{{i}}</tr>"
